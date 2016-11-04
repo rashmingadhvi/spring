@@ -1,0 +1,1 @@
+create table student ( studentId integer primary key, fName varchar, lName varchar);

@@ -7,10 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ethoca" />
+        <module name="Spring1" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="ethoca" target="1.5" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="Spring1" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

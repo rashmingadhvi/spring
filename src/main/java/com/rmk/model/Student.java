@@ -1,14 +1,12 @@
 package com.rmk.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by RashMin on 29-10-2016.
  */
 @Entity
+@Table(name = "student")
 public class Student {
 
     @javax.persistence.Id
@@ -39,5 +37,14 @@ public class Student {
 
     public void setlName(String lName) {
         this.lName = lName;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId=" + studentId +
+                ", fName='" + fName + '\'' +
+                ", lName='" + lName + '\'' +
+                '}';
     }
 }
