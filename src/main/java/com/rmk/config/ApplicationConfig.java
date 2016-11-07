@@ -50,17 +50,6 @@ public class ApplicationConfig {
         return sessionFactory.getObject();
     }
 
-
-
-    /*public DataSource restDataSource() {
-       BasicDataSource dataSource = new BasicDataSource();
-       dataSource.setDriverClassName(environment.getProperty("jdbc.driverClassName"));
-       dataSource.setUrl(environment.getProperty("jdbc.url"));
-       dataSource.setUsername(environment.getProperty("jdbc.user"));
-       dataSource.setPassword(environment.getProperty("jdbc.pass"));
-
-       return dataSource;
-    }*/
     @Bean(name="dataSource")
     public DataSource dataSource() {
 
@@ -70,7 +59,7 @@ public class ApplicationConfig {
                 .setName("###H2 Embaded#######")
                 .setType(EmbeddedDatabaseType.H2)
                 .addScript("/create-db.sql")
-                .addScript("/insert-data.sql")
+
                 .build();
         System.out.println("########DB initialized#########"+db+"##################");
         return db;

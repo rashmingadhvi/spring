@@ -2,7 +2,9 @@ package com.rmk.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by RashMin on 03-11-2016.
@@ -13,9 +15,13 @@ public class Catalog implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO )
+    @Column( name = "catalogid")
     int catalogId;
+
     String name;
-    List<Product> products;
+
+    @OneToMany(cascade = {CascadeType.ALL},mappedBy = "catalog", fetch = FetchType.LAZY)
+    Set<Product> products = new HashSet<>(0);
 
     public int getCatalogId() {
         return catalogId;
@@ -33,11 +39,20 @@ public class Catalog implements Serializable{
         this.name = name;
     }
 
-    public List<Product> getProducts() {
+    public Set<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(List<Product> products) {
+    public void setProducts(Set<Product> products) {
         this.products = products;
+    }
+
+    @Override
+    public String toString() {
+        return "Catalog{" +
+                "catalogId=" + catalogId +
+                ", name='" + name + '\'' +
+
+                '}';
     }
 }

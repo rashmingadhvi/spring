@@ -1,17 +1,18 @@
 package com.rmk.service;
 
-import com.rmk.model.ShopingCart;
-import com.rmk.model.ShopingItem;
+import com.rmk.model.ShoppingCart;
+import com.rmk.model.ShoppingItem;
 
 /**
  * Created by RashMin on 03-11-2016.
  */
 public interface CartService {
 
-    boolean addItemToCart(ShopingCart cart, ShopingItem item);
-    boolean emptyCart(ShopingCart cart);
-    boolean removeItemToCart(ShopingCart cart, ShopingItem item);
-    ShopingCart createCart();
-    ShopingItem createCartItem();
+    boolean addItemToCart(ShoppingCart cart, ShoppingItem item);
+    boolean emptyCart(ShoppingCart cart);
+    boolean removeItemToCart(ShoppingCart cart, ShoppingItem item);
+    boolean removeItemFromCart(Integer cartId,ShoppingItem item);
+    ShoppingCart createCart(ShoppingCart cart);
+    ShoppingItem createCartItem(ShoppingItem item);
 
 }

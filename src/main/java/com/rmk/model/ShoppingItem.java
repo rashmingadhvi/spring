@@ -1,15 +1,29 @@
 package com.rmk.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Map;
 
 /**
  * Created by RashMin on 03-11-2016.
  */
-public class ShopingItem implements Serializable {
+@Entity
+@Table(name="shoppingitem")
+public class ShoppingItem implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO )
+    @Column(name="itemid")
+    int itemId;
 
     int qty;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="sku")
     Product item;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cartid",nullable = false)
+    ShoppingCart cart;
+
+    @Column(name="sortorder")
     int sortOrder;
     int sequence;
     int rating;
@@ -59,7 +73,7 @@ public class ShopingItem implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ShopingItem that = (ShopingItem) o;
+        ShoppingItem that = (ShoppingItem) o;
 
         return item != null ? item.equals(that.item) : that.item == null;
     }
@@ -67,5 +81,18 @@ public class ShopingItem implements Serializable {
     @Override
     public int hashCode() {
         return item != null ? item.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "ShoppingItem{" +
+                "itemId=" + itemId +
+                ", qty=" + qty +
+                ", item=" + item +
+                ", cart=" + cart +
+                ", sortOrder=" + sortOrder +
+                ", sequence=" + sequence +
+                ", rating=" + rating +
+                '}';
     }
 }

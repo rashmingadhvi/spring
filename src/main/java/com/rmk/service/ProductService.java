@@ -7,7 +7,7 @@ import com.rmk.model.Product;
  */
 public interface ProductService {
 
-    Product create();
+    Product create(Product product);
     Product update(Product product);
     boolean delete (Product product);
     boolean delete( String sku);

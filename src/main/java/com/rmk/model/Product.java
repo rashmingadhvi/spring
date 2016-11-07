@@ -17,8 +17,12 @@ public class Product implements Serializable {
     String name;
     int rating;
     double price;
+    @Column(name="instock")
     boolean inStock;
     int qty;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "catalogid",nullable = false)
+    Catalog catalog;
 
     public String getSku() {
         return sku;
@@ -68,6 +72,14 @@ public class Product implements Serializable {
         this.qty = qty;
     }
 
+    public Catalog getCatalog() {
+        return catalog;
+    }
+
+    public void setCatalog(Catalog catalog) {
+        this.catalog = catalog;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -81,5 +93,18 @@ public class Product implements Serializable {
     @Override
     public int hashCode() {
         return sku != null ? sku.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "sku='" + sku + '\'' +
+                ", name='" + name + '\'' +
+                ", rating=" + rating +
+                ", price=" + price +
+                ", inStock=" + inStock +
+                ", qty=" + qty +
+                ", catalog=" + catalog.getCatalogId() +
+                '}';
     }
 }
